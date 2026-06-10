@@ -45,19 +45,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
-
+https://github.com/user-attachments/assets/e1d86f8a-53bb-412a-904d-e993e6d58cb7
 ## Notes
 
 - The Open Trivia Database API returns HTML entities in question/answer text, so a `decodeString` helper using a hidden `<textarea>` was needed to render them correctly.
 - Cards use `position: absolute` for the 3D flip effect, so their height is calculated dynamically via `getBoundingClientRect` to prevent the border from clipping content.
+- The App uses  Open Trivia Database API to generate random flash cards each time the api is reloaded
 
 ## License
 
