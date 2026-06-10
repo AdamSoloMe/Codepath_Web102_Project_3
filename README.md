@@ -4,7 +4,7 @@ Submitted by: **Adam Solomon**
 
 This web app: **A trivia flashcard app that fetches 10 random questions from the Open Trivia Database. Users can browse all cards in a grid, flip each card to reveal the answer, or use Study Mode to go through one card at a time with Previous and Next navigation.**
 
-Time spent: **X** hours spent in total
+Time spent: **4** hours spent in total
 
 ## Required Features
 
