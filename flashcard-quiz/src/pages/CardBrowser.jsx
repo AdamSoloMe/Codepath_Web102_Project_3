@@ -7,14 +7,26 @@ const CARD_SET_DESCRIPTION = "Test your knowledge with a random selection of tri
 
 //I then import the flashcards I already implemented
 export default function CardBrowser({ flashcards }) {
-  const [currentIndex, setCurrentIndex] = useState(0);//which index are we at 
+  const [currentIndex, setCurrentIndex] = useState(0);//which index are we at
+  const [history, setHistory] = useState([0]);
+  const [historyPos, setHistoryPos] = useState(0);
 
   function handleNext() {
     let nextIndex;
     do {
       nextIndex = Math.floor(Math.random() * flashcards.length);
     } while (nextIndex === currentIndex && flashcards.length > 1);
+    const newHistory = history.slice(0, historyPos + 1);
+    setHistory([...newHistory, nextIndex]);
+    setHistoryPos(newHistory.length);
     setCurrentIndex(nextIndex);
+  }
+
+  function handlePrev() {
+    if (historyPos === 0) return;
+    const prevPos = historyPos - 1;
+    setHistoryPos(prevPos);
+    setCurrentIndex(history[prevPos]);
   }
 
   if (!flashcards || flashcards.length === 0) {
@@ -34,9 +46,14 @@ export default function CardBrowser({ flashcards }) {
         <FlashCard flashcard={flashcards[currentIndex]} key={currentIndex} />
       </div>
 
-      <button className="next-btn" onClick={handleNext}>
-        Next →
-      </button>
+      <div className="btn-row">
+        <button className="prev-btn" onClick={handlePrev} disabled={historyPos === 0}>
+          ← Prev
+        </button>
+        <button className="next-btn" onClick={handleNext}>
+          Next →
+        </button>
+      </div>
     </div>
   );
 }
