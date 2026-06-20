@@ -1,41 +1,41 @@
-# Web Development Project 2 - Trivia Quiz Flashcards
+# Web Development Project 3 - Flashcards! Part 2
 
 Submitted by: **Adam Solomon**
 
-This web app: **A trivia flashcard app that fetches 10 random questions from the Open Trivia Database. Users can browse all cards in a grid, flip each card to reveal the answer, or use Study Mode to go through one card at a time with Previous and Next navigation.**
+This web app: **An interactive trivia flashcard app powered by the Open Trivia Database. Users can type in a guess before flipping a card to check their answer, navigate sequentially through all 10 cards, and see instant visual feedback on whether their answer was correct or incorrect.**
 
-Time spent: **4** hours spent in total
+Time spent: **X** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The app displays the title of the card set, a short description, and the total number of cards**
-  - [x] Title of card set is displayed
-  - [x] A short description of the card set is displayed
-  - [x] A list of card pairs is created
-  - [x] The total number of cards in the set is displayed
-  - [x] Card set is represented as a list of card pairs (an array of dictionaries where each dictionary contains the question and answer is perfectly fine)
-- [x] **A single card at a time is displayed**
-  - [x] Only one half of the information pair is displayed at a time
-- [x] **Clicking on the card flips the card over, showing the corresponding component of the information pair**
-  - [x] Clicking on a card flips it over, showing the back with corresponding information
-  - [x] Clicking on a flipped card again flips it back, showing the front
-- [x] **Clicking on the next button displays a random new card**
+- [x] **The user can submit a guess into an input box before seeing the flipside of a card**
+  - [x] Application features a clearly labeled input box with a submit button where users can type in a guess
+  - [x] Clicking on the submit button with an incorrect answer shows visual feedback that it is wrong
+  - [x] Clicking on the submit button with a correct answer shows visual feedback that it is correct
+- [x] **The user can navigate through an ordered list of cards**
+  - [x] A forward/next button displayed on the card navigates to the next card in a set sequence when clicked
+  - [x] A previous/back button displayed on the card returns to the previous card in the set sequence when clicked
+  - [x] Both the next and back buttons are visually grayed out and disabled at the beginning and end of the list (no wrap-around)
+
+## Optional Features
 
 The following **optional** features are implemented:
 
-- [ ] Cards contain images in addition to or in place of text
-  - [ ] Some or all cards have images in place of or in addition to text
-- [ ] Cards have different visual styles such as color based on their category
-  - Example categories you can use:
-    - Difficulty: Easy/medium/hard
-    - Subject: Biology/Chemistry/Physics/Earth science
+- [x] A user's answer may be counted as correct even when it is slightly different from the target answer
+  - Answers are compared case-insensitively with all punctuation stripped (e.g. "True" matches "true", "France!" matches "France")
+- [ ] Users can use a shuffle button to randomize the order of the cards
+- [ ] A counter displays the user's current and longest streak of correct responses
+- [ ] A user can mark a card that they have mastered and have it removed from the pool
 
-The following **additional** features are implemented:
+## Additional Features
 
-* [x] Previous button in Study Mode — navigates back through your card history
-* [x] All Cards view — displays the full set of 10 cards in a responsive grid
+* [x] Card counter shows current position ("Card 3 of 10")
+* [x] Guess input and card flip state both reset automatically when navigating to a new card
+* [x] Pressing Enter in the input box submits the guess
+* [x] Input border color changes to green/red to reinforce correct/incorrect feedback
+* [x] All Cards view — displays the full set in a responsive grid
 * [x] Answer options displayed on the front of each card (pulled from the API's incorrect answers)
 * [x] 3D flip animation when clicking a card
 * [x] Cards dynamically resize to fit their content
@@ -45,13 +45,26 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
+<!-- Replace this comment with your GIF.
+     Recommended tools (free):
+       • Kap (macOS): https://getkap.co  — record → export as GIF
+       • LICEcap: https://www.cockos.com/licecap/
+     Steps to show:
+       1. Open /card-test page
+       2. Type a wrong answer → submit (show red feedback)
+       3. Type the correct answer → submit (show green feedback)
+       4. Click Next a few times, then click Prev back to the first card
+       5. Show Next is disabled on the last card, Prev is disabled on the first
+-->
 
-https://github.com/user-attachments/assets/e1d86f8a-53bb-412a-904d-e993e6d58cb7
+![Walkthrough GIF](walkthrough.gif)
+
 ## Notes
 
-- The Open Trivia Database API returns HTML entities in question/answer text, so a `decodeString` helper using a hidden `<textarea>` was needed to render them correctly.
-- Cards use `position: absolute` for the 3D flip effect, so their height is calculated dynamically via `getBoundingClientRect` to prevent the border from clipping content.
-- The App uses  Open Trivia Database API to generate random flash cards each time the api is reloaded
+- Answer guesses use fuzzy matching: comparisons are case-insensitive and strip all punctuation so minor typos or capitalization differences don't count as wrong.
+- The `QuestionGuess` component is keyed to `currentIndex` so its state (typed guess and feedback) fully resets every time the user navigates to a new card.
+- Cards use `position: absolute` for the 3D flip effect, so their height is calculated dynamically via `getBoundingClientRect` to prevent the card border from clipping content.
+- The Open Trivia Database API returns HTML entities in question/answer text; a `decodeString` helper using a hidden `<textarea>` renders them correctly.
 
 ## License
 
