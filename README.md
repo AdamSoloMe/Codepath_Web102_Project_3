@@ -4,7 +4,7 @@ Submitted by: **Adam Solomon**
 
 This web app: **An interactive trivia flashcard app powered by the Open Trivia Database. Users can type in a guess before flipping a card to check their answer, navigate sequentially through all 10 cards, and see instant visual feedback on whether their answer was correct or incorrect.**
 
-Time spent: **X** hours spent in total
+Time spent: **5** hours spent in total
 
 ## Required Features
 
